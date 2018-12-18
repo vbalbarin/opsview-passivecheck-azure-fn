@@ -3,6 +3,18 @@
 ## Overview
 
 blah, blah, blah
+
+## Running
+
+```bash
+cp config.yaml.template config.yaml
+
+# Make appropriate changes to default values in config.yaml
+# or set them via environment variables passed to container.
+
+
+```
+
 ```bash
 # set the python version to the one requred by current MS image
 export AZURE_FUNCTION_PYTHON_VERSION=3.6.6
