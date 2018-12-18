@@ -6,14 +6,6 @@ blah, blah, blah
 
 ## Running
 
-```bash
-cp config.yaml.template config.yaml
-
-# Make appropriate changes to default values in config.yaml
-# or set them via environment variables passed to container.
-
-
-```
 
 ```bash
 # set the python version to the one requred by current MS image
@@ -49,7 +41,7 @@ func new --name 'HttpTrigger' --template HttpTrigger --language python
 docker build . --tag localhost/${AZURE_FUNCTION_NAME}:$(cat VERSION)
 
 ## run container
-docker run -p 8080:80 -it localhost/${AZURE_FUNCTION_NAME}:$(cat VERSION)
+docker run -e LOG_LEVEL=DEBUG -p 8080:80 -it localhost/${AZURE_FUNCTION_NAME}:$(cat VERSION)
 
 ## in separate shell or browser
 ## curl http://localhost:8080/api/HttpTrigger/?name=foo
