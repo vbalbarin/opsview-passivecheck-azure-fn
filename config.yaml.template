@@ -1,0 +1,39 @@
+---
+app:
+    log_level: ${LOG_LEVEL:<default_value>}
+    opsview_fqdn: ${OPSVIEW_FQDN:<default_value>}
+    opsview_username: ${OPSVIEW_USERNAME:<default_value>}
+    opsview_password: ${OPSVIEW_PASSWORD:<default_value>}
+
+azure:
+    subscription_name: ${AZURE_SUBSCRIPTION_NAME:<default_value>}
+    subscription_id: ${AZURE_SUBSCRIPTION_ID:<default_value>}
+    tenant_id: ${AZURE_TENANT_ID:<default_value>}
+    location: ${AZURE_LOCATION:<default_value>}
+    group_name: ${AZURE_GROUP_NAME:<default_value>}
+    app_name: ${AZURE_APP_NAME:<default>}
+    serviceprincipal_name: ${AZURE_SERVICEPRINCIPAL_NAME:<default>}
+    client_id: ${AZURE_CLIENT_ID:<default_value>}
+    client_secret: ${AZURE_CLIENT_SECRET:<default_value>}
+    keyvault_name: ${AZURE_KEYVAULT_NAME:<default_value>}
+    keyvault_secret_name: ${AZURE_KEYVAULT_SECRET_NAME:<default_value>}
+    keyvault_secret_value: ${AZURE_KEYVAULT_SECRET_VALUE:<default_value>}
+    keyvault_secret_version: ${AZURE_KEYVAULT_SECRET_VERSION:''}
+
+logging:
+    version: 1
+    disable_existing_loggers: False
+    formatters:
+        default:
+            format: '%(asctime)s [%(levelname)s] %(name)s %(message)s'
+    handlers:
+        console:
+            class: logging.StreamHandler
+            formatter: default
+            level: ${LOG_LEVEL:INFO}
+    loggers:
+        "":
+            handlers: [console]
+            level: ${LOG_LEVEL:INFO}
+    
+
