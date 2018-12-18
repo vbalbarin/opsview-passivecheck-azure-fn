@@ -44,3 +44,6 @@ opsview-passivecheck-fn.zip
 
 # OSX
 .DS_Store
+
+# opsview-passivecheck-fn specific
+config.yaml
