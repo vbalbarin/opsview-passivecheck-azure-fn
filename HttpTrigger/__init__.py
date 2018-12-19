@@ -10,6 +10,13 @@ import yaml
 from azure.keyvault import KeyVaultClient, KeyVaultAuthentication
 
 CONFIG_YAML = """
+---
+app:
+    log_level: ${LOG_LEVEL:<default_value>}
+    opsview_fqdn: ${OPSVIEW_FQDN:<default_value>}
+    opsview_username: ${OPSVIEW_USERNAME:<default_value>}
+    opsview_password: ${OPSVIEW_PASSWORD:<default_value>}
+
 azure:
     subscription_name: ${AZURE_SUBSCRIPTION_NAME:<default_value>}
     subscription_id: ${AZURE_SUBSCRIPTION_ID:<default_value>}
@@ -23,7 +30,8 @@ azure:
     keyvault_name: ${AZURE_KEYVAULT_NAME:<default_value>}
     keyvault_secret_name: ${AZURE_KEYVAULT_SECRET_NAME:<default_value>}
     keyvault_secret_value: ${AZURE_KEYVAULT_SECRET_VALUE:<default_value>}
-    keyvault_secret_version: ${AZURE_KEYVAULT_SECRET_VERSION:None}
+    keyvault_secret_version: ${AZURE_KEYVAULT_SECRET_VERSION:''}
+
 logging:
     version: 1
     disable_existing_loggers: False
@@ -36,9 +44,10 @@ logging:
             formatter: default
             level: ${LOG_LEVEL:INFO}
     loggers:
-        '':
+        "":
             handlers: [console]
             level: ${LOG_LEVEL:INFO}
+...
 """
 
 
@@ -81,6 +90,7 @@ logging.config.dictConfig(CFG['logging'])
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
+    logging.info(CFG)
 
     name = req.params.get('name')
     if not name:
