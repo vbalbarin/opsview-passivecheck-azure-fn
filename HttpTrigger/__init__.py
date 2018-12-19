@@ -89,8 +89,9 @@ logging.config.dictConfig(CFG['logging'])
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
-    logging.info(CFG)
+    logger = logging.getLogger(__name__)
+    logger.info('Python HTTP trigger function processed a request.')
+    logger.debug(CFG)
 
     name = req.params.get('name')
     if not name:
