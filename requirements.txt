@@ -17,7 +17,7 @@ isodate==0.6.0
 msrest==0.6.2
 msrestazure==0.6.0
 oauthlib==2.1.0
-protobuf==3.6.1
+protobuf==3.18.3
 pycparser==2.19
 PyJWT==1.7.1
 python-dateutil==2.7.5
