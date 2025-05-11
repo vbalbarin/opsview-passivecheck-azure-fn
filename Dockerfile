@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/azure-functions/python:2.0
+FROM mcr.microsoft.com/azure-functions/python:4-python3.12
 
 COPY . /home/site/wwwroot
 
